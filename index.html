@@ -271,7 +271,7 @@ tr:last-child th,tr:last-child td{border-bottom:1px solid var(--line)}
     <p class="lead">パネルの長い辺にマグネット。くっつけて、角度を変えて、自由に並べられます。2口まとめても、1口だけでも。</p>
     <div class="layout-tabs" role="tablist">
       <button role="tab" aria-selected="true" data-i="0">2口を<br>まとめて</button>
-      <button role="tab" aria-selected="false" data-i="1">1口を<br>コの字に</button>
+      <button role="tab" aria-selected="false" data-i="1">奥を<br>一直線に</button>
       <button role="tab" aria-selected="false" data-i="2">片側を<br>深く囲う</button>
     </div>
   </div>
@@ -279,8 +279,10 @@ tr:last-child th,tr:last-child td{border-bottom:1px solid var(--line)}
     <img id="layoutImg" src="img/layout-a.jpg" alt="4枚パネルで2口コンロをまとめて囲った配置" width="473" height="466">
     <div class="plan" aria-hidden="true">
       <svg viewBox="0 0 100 70"><rect x="0" y="0" width="100" height="70" fill="#F3F2EE"/>
-        <circle cx="32" cy="44" r="11" fill="none" stroke="#BBB"/><circle cx="68" cy="44" r="11" fill="none" stroke="#BBB"/>
+        <circle id="planB1" cx="28" cy="50" r="10" fill="#D8D6D0" stroke="#AAA"/><circle id="planB2" cx="66" cy="32" r="10" fill="#D8D6D0" stroke="#AAA"/>
         <polyline id="planLine" points="" fill="none" stroke="#151515" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <g id="planJoints" fill="#D3861C"></g>
+        <text x="50" y="68" text-anchor="middle" font-size="6" fill="#8E8B85" font-family="Noto Sans JP">手前</text>
       </svg>
       <small>上から見た並べ方</small>
     </div>
@@ -451,15 +453,18 @@ tr:last-child th,tr:last-child td{border-bottom:1px solid var(--line)}
 (function(){
   // ---------- layout switcher ----------
   var LAYOUTS = [
-    {img:"img/layout-a.jpg", alt:"4枚パネルで2口コンロをまとめて囲った配置",
-     pts:[[8,58],[16,16],[50,10],[84,16],[92,58]],
-     note:"<b>炒め物と煮物を同時に。</b>横に広げて、2つのコンロの奥と両サイドをカバー。"},
-    {img:"img/layout-b.jpg", alt:"4枚パネルで1口コンロをコの字に囲った配置",
-     pts:[[22,62],[22,14],[50,14],[78,14],[78,62]],
-     note:"<b>揚げ物はしっかり囲う。</b>奥と左右をまっすぐ立てて、油の飛ぶ方向をまとめてガード。"},
-    {img:"img/layout-c.jpg", alt:"4枚パネルでコンロの片側を深く囲った配置",
-     pts:[[42,62],[10,50],[10,14],[46,10],[60,30]],
-     note:"<b>壁側・となりが気になる日に。</b>片側を回り込むように囲って、手元は広く空けておけます。"}
+    {img:"img/layout-a.jpg", alt:"左側から奥へ段をつけて2口のコンロを囲った配置",
+     pts:[[14,60],[14,34],[40,34],[54,12],[80,12]],
+     burners:[[28,50,1],[67,30,1]],
+     note:"<b>炒め物と煮物を同時に。</b>左側から奥へ、段をつけてつなげば2口分をまとめてカバー。"},
+    {img:"img/layout-b.jpg", alt:"奥に3枚を一直線に並べ、右側に1枚を立てた配置",
+     pts:[[8,14],[34,14],[60,14],[86,14],[86,40]],
+     burners:[[26,46,0],[66,34,1]],
+     note:"<b>揚げ物は奥と横から。</b>奥に3枚を一直線、右側に1枚。壁と調味料側をしっかりガード。"},
+    {img:"img/layout-c.jpg", alt:"左側のパネルを手前に折り込んで鍋を深く囲った配置",
+     pts:[[40,34],[14,32],[34,12],[60,12],[84,14]],
+     burners:[[52,28,1],[78,48,0]],
+     note:"<b>手元の鍋を深く囲う。</b>左側の2枚を手前へ折り込み、鍋を包むように。奥の2枚で壁側もカバー。"}
   ];
   var tabs = document.querySelectorAll(".layout-tabs button");
   var img = document.getElementById("layoutImg");
@@ -468,7 +473,22 @@ tr:last-child th,tr:last-child td{border-bottom:1px solid var(--line)}
   var current = LAYOUTS[0].pts.map(function(p){return p.slice();});
   var raf = null;
 
-  function draw(pts){ line.setAttribute("points", pts.map(function(p){return p.join(",");}).join(" ")); }
+  var joints = document.getElementById("planJoints");
+  var burnerEls = [document.getElementById("planB1"), document.getElementById("planB2")];
+  function draw(pts){
+    line.setAttribute("points", pts.map(function(p){return p.join(",");}).join(" "));
+    joints.innerHTML = pts.slice(1, -1).map(function(p){
+      return '<rect x="' + (p[0] - 2.5) + '" y="' + (p[1] - 2.5) + '" width="5" height="5"/>';
+    }).join("");
+  }
+  function setBurners(list){
+    list.forEach(function(b, i){
+      burnerEls[i].setAttribute("cx", b[0]);
+      burnerEls[i].setAttribute("cy", b[1]);
+      burnerEls[i].setAttribute("fill", b[2] ? "#D8D6D0" : "none");
+    });
+  }
+  setBurners(LAYOUTS[0].burners);
   function animateTo(target){
     var from = current.map(function(p){return p.slice();});
     var t0 = null, DUR = 450;
@@ -482,6 +502,13 @@ tr:last-child th,tr:last-child td{border-bottom:1px solid var(--line)}
       if (k < 1) raf = requestAnimationFrame(step);
     }
     raf = requestAnimationFrame(step);
+    // fallback when frames are throttled (background tab): land on the final shape
+    clearTimeout(animateTo.t);
+    animateTo.t = setTimeout(function(){
+      if (raf) cancelAnimationFrame(raf);
+      current = target.map(function(p){ return p.slice(); });
+      draw(current);
+    }, DUR + 120);
   }
   draw(current);
   Array.prototype.forEach.call(tabs, function(btn){
@@ -489,6 +516,7 @@ tr:last-child th,tr:last-child td{border-bottom:1px solid var(--line)}
       var d = LAYOUTS[Number(btn.dataset.i)];
       Array.prototype.forEach.call(tabs, function(b){ b.setAttribute("aria-selected", String(b === btn)); });
       img.src = d.img; img.alt = d.alt; note.innerHTML = d.note;
+      setBurners(d.burners);
       animateTo(d.pts);
     });
   });
