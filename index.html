@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>マグネットレンジガード tower 4枚パネル</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#151515;
+  --ink-2:#555350;
+  --paper:#F3F2EE;
+  --white:#FFFFFF;
+  --line:#D8D6D0;
+  --oil:#D3861C;
+  --oil-soft:#F6E7CF;
+  --col:560px;
+  --gut:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:#E6E4DF;color:var(--ink);
+  font-family:"Noto Sans JP",sans-serif;font-size:16px;line-height:1.8;
+  font-feature-settings:"palt";letter-spacing:.02em;
+}
+img{display:block;width:100%;height:auto}
+a{color:inherit}
+.en{font-family:"Jost",sans-serif;letter-spacing:.04em}
+.page{max-width:var(--col);margin:0 auto;background:var(--white);overflow:hidden;padding-bottom:84px}
+.wrap{padding:0 var(--gut)}
+.sp{display:inline}
+
+/* ---------- FV ---------- */
+.fv{background:var(--paper);padding-top:28px}
+.fv-brand{display:flex;justify-content:space-between;align-items:baseline;padding:0 var(--gut)}
+.fv-brand .logo{font-family:"Jost";font-weight:600;font-size:30px;letter-spacing:-.01em;line-height:1}
+.fv-brand small{font-size:12px;color:var(--ink-2)}
+.fv-copy{padding:34px var(--gut) 0}
+.fv-copy h1{position:relative;z-index:0;font-size:46px;font-weight:900;line-height:1.22;letter-spacing:-.01em}
+.fv-copy h1 em{font-style:normal;position:relative;white-space:nowrap}
+.fv-copy h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.16em;background:var(--oil);z-index:-1}
+.fv-copy p{margin-top:16px;font-size:16px;font-weight:500;line-height:1.7}
+.fv-photo{margin-top:26px;position:relative}
+.fv-photo .tag{position:absolute;left:var(--gut);bottom:-18px;background:var(--ink);color:#fff;font-size:13px;font-weight:700;padding:8px 14px;line-height:1.3}
+.facts{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--ink);margin:42px var(--gut) 0;padding-bottom:28px}
+.facts div{padding:14px 0 0;text-align:left}
+.facts div+div{border-left:1px solid var(--line);padding-left:12px}
+.facts b{display:block;font-family:"Jost";font-weight:500;font-size:28px;line-height:1.1}
+.facts b span{font-family:"Noto Sans JP";font-size:13px;font-weight:700;margin-left:2px}
+.facts small{display:block;font-size:11.5px;line-height:1.5;color:var(--ink-2);margin-top:6px}
+.stars{display:inline-flex;gap:2px;margin-top:6px}
+.stars i{width:11px;height:11px;background:var(--oil);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+
+/* ---------- section common ---------- */
+section{padding:72px 0}
+.no{font-family:"Jost";font-weight:500;font-size:14px;letter-spacing:.2em;color:var(--oil)}
+.h2{font-size:34px;font-weight:900;line-height:1.35;margin-top:10px;letter-spacing:-.005em}
+.lead{margin-top:18px;font-size:16px;color:var(--ink-2)}
+
+/* ---------- worry ---------- */
+.worry{background:var(--ink);color:#fff;padding:80px 0 0}
+.worry .h2{font-size:30px}
+.worry .lead{color:#C9C6BF}
+.splash{margin-top:40px;background:#1F1F1F;padding:28px var(--gut) 22px}
+.splash svg{width:100%;height:auto;display:block}
+.splash p{margin-top:14px;font-size:15px;font-weight:700;color:#fff;line-height:1.6}
+.splash p span{color:var(--oil)}
+.drop{fill:var(--oil);opacity:0}
+.splash.on .drop{animation:fly 2.6s cubic-bezier(.2,.7,.3,1) infinite}
+@keyframes fly{
+  0%{transform:translate(0,0) scale(.6);opacity:0}
+  10%{opacity:1}
+  55%{transform:translate(var(--dx),var(--dy)) scale(1);opacity:1}
+  80%{transform:translate(var(--dx),var(--dy)) scale(1.3);opacity:.0}
+  100%{opacity:0}
+}
+@media (prefers-reduced-motion:reduce){.splash.on .drop{animation:none;opacity:1;transform:translate(var(--dx),var(--dy))}}
+
+/* ---------- 01 layout ---------- */
+.layout-tabs{display:grid;grid-template-columns:repeat(3,1fr);margin-top:30px;border:1px solid var(--ink)}
+.layout-tabs button{appearance:none;border:0;background:#fff;font:inherit;font-size:14px;font-weight:700;line-height:1.35;padding:12px 4px;cursor:pointer;color:var(--ink)}
+.layout-tabs button+button{border-left:1px solid var(--ink)}
+.layout-tabs button[aria-selected="true"]{background:var(--ink);color:#fff}
+.layout-view{position:relative;margin-top:0}
+.layout-view img{aspect-ratio:1/1;object-fit:cover}
+.plan{position:absolute;right:12px;bottom:12px;width:118px;background:#fff;padding:8px}
+.plan svg{display:block;width:100%;height:auto}
+.plan small{display:block;font-size:10.5px;text-align:center;color:var(--ink-2);line-height:1.3;margin-top:2px}
+.layout-note{margin-top:18px;font-size:15px}
+.layout-note b{font-size:18px;display:block;margin-bottom:4px}
+.magnet{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin-top:34px;padding-top:24px;border-top:1px solid var(--line)}
+.magnet svg{width:84px;height:auto}
+.magnet p{font-size:14.5px;line-height:1.75}
+
+/* ---------- 02 wash ---------- */
+.wash{background:var(--paper)}
+.wash .full{margin-top:30px}
+.split{display:grid;grid-template-columns:44% 1fr;gap:18px;align-items:end;padding:0 var(--gut);margin-top:-36px;position:relative}
+.split img{border:6px solid var(--paper)}
+.split p{font-size:15px;padding-bottom:4px}
+.split p b{display:block;font-size:19px;line-height:1.45;margin-bottom:8px}
+
+/* ---------- 03 store ---------- */
+.store .duo{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px}
+.thin{display:flex;align-items:flex-end;gap:14px;margin-top:28px}
+.thin b{font-family:"Jost";font-weight:500;font-size:64px;line-height:.9}
+.thin b span{font-size:24px}
+.thin p{font-size:14.5px;line-height:1.6;padding-bottom:6px}
+
+/* ---------- numbers ---------- */
+.nums{background:var(--ink);color:#fff;padding:64px 0}
+.nums .h2{font-size:26px}
+.num-grid{display:grid;grid-template-columns:1fr 1fr;margin-top:28px;border-top:1px solid #3A3A3A}
+.num-grid div{padding:20px 0 20px;border-bottom:1px solid #3A3A3A}
+.num-grid div:nth-child(odd){padding-right:14px;border-right:1px solid #3A3A3A}
+.num-grid div:nth-child(even){padding-left:16px}
+.num-grid b{display:block;font-family:"Jost";font-weight:500;font-size:44px;line-height:1}
+.num-grid b span{font-size:18px;margin-left:2px}
+.num-grid b.jp{font-family:"Noto Sans JP";font-weight:900;font-size:30px;line-height:1.45}
+.num-grid small{display:block;margin-top:8px;font-size:13px;color:#BDBAB3;line-height:1.5}
+
+/* ---------- color ---------- */
+.color-switch{display:flex;gap:22px;margin-top:26px}
+.color-switch button{appearance:none;background:none;border:0;font:inherit;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;cursor:pointer;padding:6px 0;color:var(--ink-2);border-bottom:2px solid transparent}
+.color-switch button i{width:22px;height:22px;border-radius:50%;border:1px solid #999}
+.color-switch button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.color-view{margin-top:14px;position:relative}
+.color-view img{aspect-ratio:1/1;object-fit:cover;transition:opacity .35s}
+.color-view img+img{position:absolute;inset:0}
+.color-text{margin-top:16px;font-size:15px}
+
+/* ---------- voice ---------- */
+.voice{background:var(--paper)}
+.score{display:flex;align-items:baseline;gap:12px;margin-top:20px}
+.score b{font-family:"Jost";font-size:56px;font-weight:500;line-height:1}
+.score .stars i{width:16px;height:16px}
+.score small{font-size:13px;color:var(--ink-2)}
+.quotes{margin-top:24px}
+.quotes blockquote{padding:22px 0;border-top:1px solid var(--line);font-size:16px;line-height:1.85}
+.quotes blockquote:last-child{border-bottom:1px solid var(--line)}
+.quotes cite{display:block;margin-top:8px;font-style:normal;font-size:12.5px;color:var(--ink-2)}
+.rank{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin-top:34px;background:var(--white);padding:18px}
+.rank .r1{font-family:"Jost";font-weight:600;font-size:46px;line-height:1;color:var(--oil)}
+.rank .r1 span{font-family:"Noto Sans JP";font-size:18px;font-weight:900}
+.rank p{font-size:13.5px;line-height:1.6}
+.rank p b{font-size:16px;display:block}
+
+/* ---------- caution ---------- */
+.caution{padding:64px 0}
+.check{margin-top:24px;border-left:4px solid var(--oil);padding:4px 0 4px 18px}
+.check li{list-style:none;font-size:15.5px;line-height:1.7;padding:10px 0}
+.check li+li{border-top:1px dashed var(--line)}
+.check li b{display:block;font-size:17px}
+
+/* ---------- spec ---------- */
+.spec{padding:56px 0 64px;background:var(--paper)}
+.spec h2{font-family:"Jost";font-weight:500;font-size:24px;letter-spacing:.18em}
+.spec .size{display:grid;grid-template-columns:42% 1fr;gap:12px;align-items:center;margin-top:20px}
+.spec .size img{background:#fff}
+table{width:100%;border-collapse:collapse;margin-top:22px;font-size:14px;line-height:1.6}
+th,td{text-align:left;vertical-align:top;padding:12px 0;border-top:1px solid var(--line)}
+th{width:7em;font-weight:700;padding-right:10px}
+tr:last-child th,tr:last-child td{border-bottom:1px solid var(--line)}
+
+/* ---------- related / service ---------- */
+.service{padding:48px 0}
+.service ul{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.service li{list-style:none;padding:16px 0;font-size:13px;line-height:1.5}
+.service li+li{border-left:1px solid var(--line);padding-left:16px}
+.service li b{display:block;font-size:20px;font-weight:900;line-height:1.3}
+.related{padding:0 0 56px}
+.related h3{font-size:17px;margin-bottom:12px}
+.related a.txt{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-weight:700;text-decoration:none;font-size:15px}
+.arrow{width:9px;height:9px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);flex:none}
+
+/* ---------- sticky CTA ---------- */
+.cta{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;justify-content:center;pointer-events:none;transform:translateY(110%);transition:transform .35s}
+.cta.show{transform:none}
+.cta-in{pointer-events:auto;width:100%;max-width:var(--col);background:var(--white);border-top:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:10px var(--gut) calc(10px + env(safe-area-inset-bottom))}
+.cta-price{flex:none;line-height:1.2}
+.cta-price b{font-family:"Jost";font-size:24px;font-weight:500}
+.cta-price b span{font-family:"Noto Sans JP";font-size:12px;font-weight:700}
+.cta-price small{display:block;font-size:11px;color:var(--ink-2)}
+.cta a{flex:1;display:flex;justify-content:center;align-items:center;gap:10px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;font-size:16px;height:52px}
+
+.fade{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
+.fade.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.fade{opacity:1;transform:none}}
+
+@media (min-width:600px){
+  body{padding:32px 0}
+  .fv-copy h1{font-size:52px}
+}
+@media (max-width:360px){
+  :root{--gut:16px}
+  .fv-copy h1{font-size:40px}
+  .h2{font-size:29px}
+  .facts b{font-size:24px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ================= FV ================= -->
+<header class="fv">
+  <div class="fv-brand">
+    <span class="logo">tower</span>
+    <small>山崎実業 ／ IH専用</small>
+  </div>
+  <div class="fv-copy">
+    <h1>揚げ物の<br>油はね、<br><em>パネルの内側</em>で<br>止める。</h1>
+    <p>マグネットでつながる4枚のシリコーンパネル。<br>鍋に合わせて、囲い方を変えられます。</p>
+  </div>
+  <div class="fv-photo">
+    <img src="img/fv.jpg" alt="IHコンロの揚げ鍋をホワイトのレンジガードが囲んでいる様子" width="760" height="760">
+    <span class="tag">マグネットレンジガード 4枚パネル</span>
+  </div>
+  <div class="facts">
+    <div><b>1<span>位</span></b><small>楽天リアルタイム<br>ランキング※</small></div>
+    <div><b>4.79</b><span class="stars" aria-label="5段階中4.79"><i></i><i></i><i></i><i></i><i></i></span><small>レビュー14件</small></div>
+    <div><b>7,920<span>円</span></b><small>税込・送料無料</small></div>
+  </div>
+</header>
+
+<!-- ================= worry ================= -->
+<section class="worry">
+  <div class="wrap fade">
+    <p class="no en">BEFORE</p>
+    <h2 class="h2">揚げ物のあと、<br>コンロまわりを<br>拭く時間が長い。</h2>
+    <p class="lead">油はねは、コンロの奥や横の壁、となりの調味料にまで届きます。<br>先に「囲っておく」だけで、あとの掃除はぐっとラクに。</p>
+  </div>
+  <div class="splash" id="splash" aria-hidden="true">
+    <svg viewBox="0 0 320 210">
+      <!-- IH top plate -->
+      <rect x="10" y="20" width="300" height="180" fill="#2A2A2A"/>
+      <circle cx="100" cy="125" r="44" fill="none" stroke="#444" stroke-width="2"/>
+      <circle cx="220" cy="125" r="44" fill="none" stroke="#444" stroke-width="2"/>
+      <!-- pot -->
+      <circle cx="100" cy="125" r="30" fill="#5A5A5A"/>
+      <circle cx="100" cy="125" r="24" fill="#8A6A2E"/>
+      <!-- panels (コの字) -->
+      <polyline points="30,170 30,40 170,40 170,170" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
+      <!-- magnet joints -->
+      <g fill="var(--oil)"><rect x="96" y="36" width="8" height="8"/><rect x="26" y="36" width="8" height="8"/><rect x="166" y="36" width="8" height="8"/></g>
+      <!-- droplets -->
+      <g transform="translate(100 125)">
+        <circle class="drop" r="4" style="--dx:-62px;--dy:-30px;animation-delay:0s"/>
+        <circle class="drop" r="3" style="--dx:-30px;--dy:-78px;animation-delay:.4s"/>
+        <circle class="drop" r="4" style="--dx:20px;--dy:-78px;animation-delay:.9s"/>
+        <circle class="drop" r="3" style="--dx:62px;--dy:-60px;animation-delay:1.3s"/>
+        <circle class="drop" r="3.5" style="--dx:62px;--dy:5px;animation-delay:.6s"/>
+        <circle class="drop" r="3" style="--dx:-62px;--dy:20px;animation-delay:1.6s"/>
+        <circle class="drop" r="3" style="--dx:-10px;--dy:-78px;animation-delay:2s"/>
+      </g>
+      <text x="240" y="60" fill="#8E8B85" font-size="11" font-family="Noto Sans JP">上から見ると</text>
+    </svg>
+    <p>飛んだ油は<span>パネルで止まり</span>、<br>奥の壁や調味料まで届きにくくなります。</p>
+  </div>
+</section>
+
+<!-- ================= 01 layout ================= -->
+<section class="layout">
+  <div class="wrap fade">
+    <p class="no en">POINT 01</p>
+    <h2 class="h2">囲い方は、<br>その日の鍋で決める。</h2>
+    <p class="lead">パネルの長い辺にマグネット。くっつけて、角度を変えて、自由に並べられます。2口まとめても、1口だけでも。</p>
+    <div class="layout-tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-i="0">2口を<br>まとめて</button>
+      <button role="tab" aria-selected="false" data-i="1">1口を<br>コの字に</button>
+      <button role="tab" aria-selected="false" data-i="2">片側を<br>深く囲う</button>
+    </div>
+  </div>
+  <div class="layout-view">
+    <img id="layoutImg" src="img/layout-a.jpg" alt="4枚パネルで2口コンロをまとめて囲った配置" width="473" height="466">
+    <div class="plan" aria-hidden="true">
+      <svg viewBox="0 0 100 70"><rect x="0" y="0" width="100" height="70" fill="#F3F2EE"/>
+        <circle cx="32" cy="44" r="11" fill="none" stroke="#BBB"/><circle cx="68" cy="44" r="11" fill="none" stroke="#BBB"/>
+        <polyline id="planLine" points="" fill="none" stroke="#151515" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <small>上から見た並べ方</small>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="layout-note" id="layoutNote"><b>炒め物と煮物を同時に。</b>横に広げて、2つのコンロの奥と両サイドをカバー。</p>
+    <div class="magnet">
+      <svg viewBox="0 0 84 60" aria-hidden="true">
+        <rect x="6" y="6" width="32" height="48" fill="#fff" stroke="#151515" stroke-width="2"/>
+        <rect x="46" y="6" width="32" height="48" fill="#fff" stroke="#151515" stroke-width="2"/>
+        <rect x="36" y="14" width="4" height="32" fill="#D3861C"/><rect x="44" y="14" width="4" height="32" fill="#D3861C"/>
+      </svg>
+      <p>パネル同士はマグネットで連結。近づけるだけでピタッとつながり、外すのも簡単です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 wash ================= -->
+<section class="wash">
+  <div class="wrap fade">
+    <p class="no en">POINT 02</p>
+    <h2 class="h2">外して、洗って、<br>戻すだけ。</h2>
+    <p class="lead">シリコーン製のパネルは1枚ずつ外れるから、つなぎ目も隅々まで洗えて清潔に使えます。</p>
+  </div>
+  <img class="full" src="img/wash.jpg" alt="外したパネルをシンクでスポンジ洗いしている様子" width="900" height="670">
+  <div class="split">
+    <img src="img/dishwasher.jpg" alt="食洗機に4枚のパネルを立てて入れた様子" width="473" height="469">
+    <p><b>食洗機にも<br>そのまま入る。</b>手洗いが面倒な日は、食器と一緒に食洗機へ。</p>
+  </div>
+</section>
+
+<!-- ================= 03 store ================= -->
+<section class="store">
+  <div class="wrap fade">
+    <p class="no en">POINT 03</p>
+    <h2 class="h2">使わない日は、<br>薄い4枚に戻る。</h2>
+    <p class="lead">重ねて引き出しへ。出しっぱなしにしないから、キッチンはいつもすっきり。</p>
+  </div>
+  <img src="img/drawer.jpg" alt="鍋と一緒に引き出しへパネルを立てて収納した様子" width="900" height="541" style="margin-top:28px">
+  <div class="duo">
+    <img src="img/stack-a.jpg" alt="パネルを1枚ずつ外して持っている様子" width="483" height="334">
+    <img src="img/stack-b.jpg" alt="4枚のパネルを重ねている様子" width="483" height="334">
+  </div>
+  <div class="wrap thin">
+    <b class="en">0.7<span>cm</span></b>
+    <p>パネル1枚の厚み。<br>鍋のすき間にも収まります。</p>
+  </div>
+</section>
+
+<!-- ================= numbers ================= -->
+<section class="nums">
+  <div class="wrap">
+    <p class="no en">SPEC</p>
+    <h2 class="h2">数字で見る、<br>マグネットレンジガード。</h2>
+    <div class="num-grid">
+      <div><b class="en">240<span>℃</span></b><small>耐熱温度。<br>揚げ物の熱にも。</small></div>
+      <div><b class="en">32<span>cm</span></b><small>パネルの高さ。<br>奥と横をしっかりカバー。</small></div>
+      <div><b class="en">4<span>枚</span></b><small>18cm幅のパネルを<br>マグネットで連結。</small></div>
+      <div><b class="jp">食洗機<br>OK</b><small>1枚ずつ外して<br>まるごと洗える。</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= color ================= -->
+<section class="color">
+  <div class="wrap fade">
+    <p class="no en">COLOR</p>
+    <h2 class="h2">キッチンに合わせて、<br>白か黒か。</h2>
+    <div class="color-switch">
+      <button aria-pressed="true" data-c="white"><i style="background:#fff"></i>ホワイト</button>
+      <button aria-pressed="false" data-c="black"><i style="background:#151515"></i>ブラック</button>
+    </div>
+  </div>
+  <div class="color-view">
+    <img id="cWhite" src="img/white.jpg" alt="ホワイトのレンジガードを使ったキッチン" width="760" height="760">
+    <img id="cBlack" src="img/black.jpg" alt="ブラックのレンジガードを使ったキッチン" width="760" height="760" style="opacity:0">
+  </div>
+  <div class="wrap">
+    <p class="color-text" id="colorText">ホワイトは明るいキッチンになじみ、圧迫感を出しません。</p>
+  </div>
+</section>
+
+<!-- ================= voice ================= -->
+<section class="voice">
+  <div class="wrap fade">
+    <p class="no en">VOICE</p>
+    <h2 class="h2">使った人の声</h2>
+    <div class="score">
+      <b class="en">4.79</b>
+      <div><span class="stars" aria-label="5段階中4.79"><i></i><i></i><i></i><i></i><i></i></span><br><small>レビュー14件の平均</small></div>
+    </div>
+    <div class="quotes">
+      <blockquote>1枚ずつ取り外して洗えるところ、形を変えて設置できるところはいいと思います。見た目もスッキリして良い感じです。<cite>2026/10/01 購入者さま</cite></blockquote>
+      <blockquote>シンプルで使いやすそうです！食洗機で洗えるのも嬉しいですね！<cite>2026/09/15 購入者さま</cite></blockquote>
+      <blockquote>山崎実業の商品はシンプルで使い心地が良いものが多いので、期待を込めて買いました。バラバラになり、シリコンなので傷つけずに洗ったりできて良さそうです。<cite>2026/11/13 新築用にご購入の方</cite></blockquote>
+    </div>
+    <div class="rank">
+      <div class="r1">1<span>位</span></div>
+      <p><b>楽天リアルタイムランキング</b>キッチン用品・食器・調理器具 ＞ キッチン整理用品 部門<br>※2026年10月20日 12:55更新</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= caution ================= -->
+<section class="caution">
+  <div class="wrap fade">
+    <p class="no en">CHECK</p>
+    <h2 class="h2">ご購入の前に、<br>ここだけ確認を。</h2>
+    <ul class="check">
+      <li><b>IHクッキングヒーター専用です。</b>ガスコンロ・直火ではお使いいただけません。</li>
+      <li><b>使用直後のヒーター部には置かないでください。</b>高温になっているため、冷めてから設置を。</li>
+      <li><b>スチール製がお好みの方は</b>「伸縮レンジガード」もあります（ページ下部のリンクから）。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= spec ================= -->
+<section class="spec">
+  <div class="wrap">
+    <h2>SIZE ＆ SPEC</h2>
+    <div class="size">
+      <img src="img/size.jpg" alt="パネルのサイズ 幅18cm 高さ32cm 厚み0.7cm" width="760" height="760">
+      <p style="font-size:15px;line-height:1.7"><b style="font-size:18px">1枚あたり</b><br>幅18 × 奥行0.7 × 高さ32cm<br>4枚セット</p>
+    </div>
+    <table>
+      <tr><th>商品名</th><td>マグネットレンジガード タワー 4枚パネル</td></tr>
+      <tr><th>カラー</th><td>ホワイト／ブラック</td></tr>
+      <tr><th>サイズ</th><td>パネル：W18×D0.7×H32cm（1枚あたり）</td></tr>
+      <tr><th>重量</th><td>1210g</td></tr>
+      <tr><th>素材</th><td>本体：シリコーンゴム、アルミニウム（芯材）、ネオジムマグネット</td></tr>
+      <tr><th>耐熱・耐冷</th><td>耐熱240℃ ／ 耐冷−40℃</td></tr>
+      <tr><th>食洗機</th><td>対応</td></tr>
+      <tr><th>原産国</th><td>中国</td></tr>
+      <tr><th>備考</th><td>IHクッキングヒーター専用。ガスコンロや直火には使用不可。IH使用直後で高温のヒーター部には設置しないでください。</td></tr>
+      <tr><th>JAN</th><td>ホワイト 4903208014564<br>ブラック 4903208014571</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ================= service / related ================= -->
+<div class="service">
+  <div class="wrap">
+    <ul>
+      <li><b>365日出荷</b>土日祝日も発送しています</li>
+      <li><b>ポイント5倍</b>山崎実業公式</li>
+    </ul>
+  </div>
+</div>
+<div class="related">
+  <div class="wrap">
+    <h3>こちらの商品もおすすめ</h3>
+    <a href="https://item.rakuten.co.jp/patie/ymj-01465/"><img src="https://image.rakuten.co.jp/bellevie-harima/cabinet/kaiyu2/ymj-01465_kaiyu.jpg" alt="おすすめ商品" width="980" height="420" loading="lazy"></a>
+    <a class="txt" href="https://item.rakuten.co.jp/patie/tower-060/">スチールタイプ 伸縮レンジガードはこちら<span class="arrow"></span></a>
+  </div>
+</div>
+
+</div>
+
+<!-- ================= sticky CTA ================= -->
+<div class="cta" id="cta">
+  <div class="cta-in">
+    <div class="cta-price"><b>7,920<span>円</span></b><small>税込・送料無料</small></div>
+    <a href="https://item.rakuten.co.jp/patie/ymj-01403/">カラーを選んで購入<span class="arrow"></span></a>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ---------- layout switcher ----------
+  var LAYOUTS = [
+    {img:"img/layout-a.jpg", alt:"4枚パネルで2口コンロをまとめて囲った配置",
+     pts:[[8,58],[16,16],[50,10],[84,16],[92,58]],
+     note:"<b>炒め物と煮物を同時に。</b>横に広げて、2つのコンロの奥と両サイドをカバー。"},
+    {img:"img/layout-b.jpg", alt:"4枚パネルで1口コンロをコの字に囲った配置",
+     pts:[[22,62],[22,14],[50,14],[78,14],[78,62]],
+     note:"<b>揚げ物はしっかり囲う。</b>奥と左右をまっすぐ立てて、油の飛ぶ方向をまとめてガード。"},
+    {img:"img/layout-c.jpg", alt:"4枚パネルでコンロの片側を深く囲った配置",
+     pts:[[42,62],[10,50],[10,14],[46,10],[60,30]],
+     note:"<b>壁側・となりが気になる日に。</b>片側を回り込むように囲って、手元は広く空けておけます。"}
+  ];
+  var tabs = document.querySelectorAll(".layout-tabs button");
+  var img = document.getElementById("layoutImg");
+  var line = document.getElementById("planLine");
+  var note = document.getElementById("layoutNote");
+  var current = LAYOUTS[0].pts.map(function(p){return p.slice();});
+  var raf = null;
+
+  function draw(pts){ line.setAttribute("points", pts.map(function(p){return p.join(",");}).join(" ")); }
+  function animateTo(target){
+    var from = current.map(function(p){return p.slice();});
+    var t0 = null, DUR = 450;
+    if (raf) cancelAnimationFrame(raf);
+    function step(ts){
+      if (!t0) t0 = ts;
+      var k = Math.min(1, (ts - t0) / DUR);
+      var e = 1 - Math.pow(1 - k, 3);
+      current = from.map(function(p, i){ return [p[0] + (target[i][0] - p[0]) * e, p[1] + (target[i][1] - p[1]) * e]; });
+      draw(current);
+      if (k < 1) raf = requestAnimationFrame(step);
+    }
+    raf = requestAnimationFrame(step);
+  }
+  draw(current);
+  Array.prototype.forEach.call(tabs, function(btn){
+    btn.addEventListener("click", function(){
+      var d = LAYOUTS[Number(btn.dataset.i)];
+      Array.prototype.forEach.call(tabs, function(b){ b.setAttribute("aria-selected", String(b === btn)); });
+      img.src = d.img; img.alt = d.alt; note.innerHTML = d.note;
+      animateTo(d.pts);
+    });
+  });
+
+  // ---------- color switch ----------
+  var COLOR_TEXT = {
+    white:"ホワイトは明るいキッチンになじみ、圧迫感を出しません。",
+    black:"ブラックはIHの天板と色がそろい、コンロまわりが引き締まります。"
+  };
+  var cBtns = document.querySelectorAll(".color-switch button");
+  Array.prototype.forEach.call(cBtns, function(btn){
+    btn.addEventListener("click", function(){
+      var c = btn.dataset.c;
+      Array.prototype.forEach.call(cBtns, function(b){ b.setAttribute("aria-pressed", String(b === btn)); });
+      document.getElementById("cBlack").style.opacity = c === "black" ? "1" : "0";
+      document.getElementById("colorText").textContent = COLOR_TEXT[c];
+    });
+  });
+
+  // ---------- reveal / splash / CTA ----------
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add(en.target.id === "splash" ? "on" : "in"); }
+      });
+    }, {threshold: .1, rootMargin: "0px 0px -8% 0px"});
+    document.querySelectorAll(".fade, #splash").forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll(".fade").forEach(function(el){ el.classList.add("in"); });
+    document.getElementById("splash").classList.add("on");
+  }
+  var cta = document.getElementById("cta");
+  var fv = document.querySelector(".fv");
+  window.addEventListener("scroll", function(){
+    cta.classList.toggle("show", window.scrollY > fv.offsetHeight * 0.6);
+  }, {passive:true});
+})();
+</script>
+</body>
+</html>
