@@ -89,9 +89,16 @@ section{padding:52px 0}
 .layout-view img{aspect-ratio:1/1;object-fit:cover}
 .layout-note{margin-top:14px;font-size:16.5px}
 .layout-note b{font-size:20px;display:block;margin-bottom:4px}
-.magnet{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
-.magnet svg{width:84px;height:auto}
-.magnet p{font-size:16px;line-height:1.75}
+.snap{background:var(--paper);margin-top:24px;padding:22px var(--gut) 16px}
+.snap svg{display:block;width:100%;max-width:340px;height:auto;margin:0 auto}
+.snap .pl,.snap .pr{transition:transform .7s cubic-bezier(.3,1.4,.5,1)}
+.snap .pl{transform:translateX(-30px)}
+.snap .pr{transform:translateX(30px)}
+.snap .snap-word{opacity:0;transition:opacity .3s .55s}
+.snap.on .pl,.snap.on .pr{transform:none}
+.snap.on .snap-word{opacity:1}
+@media (prefers-reduced-motion:reduce){.snap .pl,.snap .pr{transform:none}.snap .snap-word{opacity:1}}
+.h3{font-size:24px;font-weight:900;line-height:1.4;margin-top:34px;letter-spacing:.03em}
 
 /* ---------- 02 wash ---------- */
 .wash{background:var(--paper)}
@@ -264,8 +271,28 @@ tr:last-child th,tr:last-child td{border-bottom:1px solid var(--line)}
 <section class="layout">
   <div class="wrap fade">
     <p class="no en">POINT 01</p>
-    <h2 class="h2">囲い方は、<br>その日の鍋で決める。</h2>
-    <p class="lead">パネルの長い辺にマグネット。くっつけて、角度を変えて、自由に並べられます。2口まとめても、1口だけでも。</p>
+    <h2 class="h2">近づけるだけで、<br>ピタッとつながる。</h2>
+    <p class="lead">パネルの長い辺にマグネット。<br>つなぐのも外すのも、手でパッと。</p>
+  </div>
+  <div class="snap" id="snap" aria-hidden="true">
+    <svg viewBox="0 0 320 212">
+      <g class="snap-word">
+        <text x="160" y="22" text-anchor="middle" font-size="20" font-weight="900" fill="#D3861C" font-family="Noto Sans JP">ピタッ</text>
+        <path d="M128 18 L118 10 M128 30 L116 30 M192 18 L202 10 M192 30 L204 30" stroke="#D3861C" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+      <g class="pl">
+        <rect x="78" y="40" width="80" height="142" rx="6" fill="#fff" stroke="#151515" stroke-width="2"/>
+        <rect x="150" y="54" width="6" height="114" fill="#D3861C"/>
+      </g>
+      <g class="pr">
+        <rect x="162" y="40" width="80" height="142" rx="6" fill="#fff" stroke="#151515" stroke-width="2"/>
+        <rect x="164" y="54" width="6" height="114" fill="#D3861C"/>
+      </g>
+      <text x="160" y="206" text-anchor="middle" font-size="12" font-weight="700" fill="#555350" font-family="Noto Sans JP">長い辺に、マグネット</text>
+    </svg>
+  </div>
+  <div class="wrap fade">
+    <h3 class="h3">だから囲い方は、<br>その日の鍋で決められる。</h3>
     <div class="layout-tabs" role="tablist">
       <button role="tab" aria-selected="true" data-i="0">2口を<br>まとめて</button>
       <button role="tab" aria-selected="false" data-i="1">角に</button>
@@ -277,14 +304,6 @@ tr:last-child th,tr:last-child td{border-bottom:1px solid var(--line)}
   </div>
   <div class="wrap">
     <p class="layout-note" id="layoutNote"><b>炒め物と煮物を同時に。</b>左側から奥へ、段をつけてつなげば2口分をまとめてカバー。</p>
-    <div class="magnet">
-      <svg viewBox="0 0 84 60" aria-hidden="true">
-        <rect x="6" y="6" width="32" height="48" fill="#fff" stroke="#151515" stroke-width="2"/>
-        <rect x="46" y="6" width="32" height="48" fill="#fff" stroke="#151515" stroke-width="2"/>
-        <rect x="36" y="14" width="4" height="32" fill="#D3861C"/><rect x="44" y="14" width="4" height="32" fill="#D3861C"/>
-      </svg>
-      <p>パネル同士はマグネットで連結。近づけるだけでピタッとつながり、外すのも簡単です。</p>
-    </div>
   </div>
 </section>
 
@@ -478,18 +497,21 @@ tr:last-child th,tr:last-child td{border-bottom:1px solid var(--line)}
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
-        if (en.isIntersecting) { en.target.classList.add(en.target.id === "splash" ? "on" : "in"); }
+        if (en.isIntersecting) { en.target.classList.add(en.target.classList.contains("fade") ? "in" : "on"); }
       });
     }, {threshold: .1, rootMargin: "0px 0px -8% 0px"});
-    document.querySelectorAll(".fade, #splash").forEach(function(el){ io.observe(el); });
+    document.querySelectorAll(".fade, #splash, #snap").forEach(function(el){ io.observe(el); });
   } else {
     document.querySelectorAll(".fade").forEach(function(el){ el.classList.add("in"); });
     document.getElementById("splash").classList.add("on");
+    document.getElementById("snap").classList.add("on");
   }
   var cta = document.getElementById("cta");
   var fv = document.querySelector(".fv");
+  var snapEl = document.getElementById("snap");
   window.addEventListener("scroll", function(){
     cta.classList.toggle("show", window.scrollY > fv.offsetHeight * 0.6);
+    if (snapEl.getBoundingClientRect().top < window.innerHeight * 0.75) { snapEl.classList.add("on"); }
   }, {passive:true});
 })();
 </script>
